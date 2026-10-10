@@ -1,14 +1,108 @@
-Samira & Youssef
-Wij gaan trouwen
-26 juni 2027
-258 dagen te gaan
-📍 Locatie
-Marrakech Palace Rotterdam
-🕒 Dagplanning
-13:00 Ontvangst
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-14:00 Ceremonie
+<title>Inviora</title>
 
-18:00 Diner
+<style>
 
-20:00 Feest
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+
+    background-image:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2000");
+
+    background-size:cover;
+    background-position:center;
+    font-family:Georgia, serif;
+}
+
+.container{
+    padding:30px;
+}
+
+h1{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+h2{
+    color:#d8c084;
+    font-weight:normal;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    margin:20px auto;
+    border-radius:10px;
+    max-width:500px;
+}
+
+#countdown{
+    font-size:2rem;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Samira & Youssef</h1>
+
+<h2>Wij gaan trouwen</h2>
+
+<p>26 juni 2027</p>
+
+<div id="countdown"></div>
+
+<div class="card">
+<h3>📍 Locatie</h3>
+<p>Marrakech Palace Rotterdam</p>
+</div>
+
+<div class="card">
+<h3>🕒 Dagplanning</h3>
+<p>13:00 Ontvangst</p>
+<p>14:00 Ceremonie</p>
+<p>18:00 Diner</p>
+<p>20:00 Feest</p>
+</div>
+
+</div>
+
+<script>
+
+const weddingDate = new Date("2027-06-26");
+
+function updateCountdown(){
+
+const now = new Date();
+const diff = weddingDate - now;
+
+const days = Math.floor(diff / (1000*60*60*24));
+
+document.getElementById("countdown").innerHTML =
+days + " dagen te gaan";
+
+}
+
+updateCountdown();
+
+</script>
+
+</body>
+</html>
