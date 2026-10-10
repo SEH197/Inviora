@@ -75,25 +75,31 @@ body{
 @keyframes drift{
 
     0%{
-        margin-left:0;
+        transform:
+        translateX(0px);
     }
 
     25%{
-        margin-left:8px;
+        transform:
+        translateX(5px);
     }
 
     50%{
-        margin-left:-6px;
+        transform:
+        translateX(-4px);
     }
 
     75%{
-        margin-left:10px;
+        transform:
+        translateX(6px);
     }
 
     100%{
-        margin-left:0;
+        transform:
+        translateX(0px);
     }
 }
+
 
 @keyframes spin{
 
@@ -411,9 +417,9 @@ for(let i = 0; i < 250; i++){
     ];
 
     petal.style.animationDuration =
-    `${18+Math.random()*15}s,
-     ${4+Math.random()*6}s,
-     ${8+Math.random()*12}s`;
+    `${18+Math.random()*7}s,
+     ${4+Math.random()*3}s,
+     ${8+Math.random()*6}s`;
 
     petalsContainer.appendChild(petal);
 }
