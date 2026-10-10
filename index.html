@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +10,9 @@
 
 :root{
     --bg:#F6F1EA;
-    --card:#ffffff;
     --text:#4F453B;
     --accent:#8E7862;
+    --card:#FFFFFF;
 }
 
 *{
@@ -26,92 +25,217 @@ body{
     background:var(--bg);
     color:var(--text);
     font-family:Georgia, serif;
+    overflow-x:hidden;
 }
 
-/* HERO */
+/* =============================
+   VALLENDE ROZENBLAADJES
+============================= */
+
+.petals{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.petal{
+
+    position:absolute;
+
+    width:34px;
+    height:22px;
+
+    border-radius:
+        100% 20%
+        100% 20%;
+
+    transform-origin:center;
+
+    background:#6B0F1A;
+
+    opacity:0.22;
+
+    box-shadow:
+        0 4px 8px rgba(0,0,0,.08);
+
+    animation:
+        fall linear infinite,
+        drift ease-in-out infinite,
+        spin ease-in-out infinite;
+}
+
+/* kleurvariaties */
+
+.p2,.p5,.p8,.p11{
+    background:#7E1422;
+}
+
+.p3,.p6,.p9,.p12{
+    background:#8D2230;
+}
+
+.p4,.p7,.p10{
+    background:#5A0B14;
+}
+
+/* verschillende vormen */
+
+.p1,.p7{
+    width:28px;
+    height:18px;
+}
+
+.p2,.p8{
+    width:42px;
+    height:24px;
+}
+
+.p3,.p9{
+    width:35px;
+    height:28px;
+}
+
+.p4,.p10{
+    width:38px;
+    height:20px;
+}
+
+/* vallen */
+
+@keyframes fall{
+
+    from{
+        transform:translateY(-150px);
+    }
+
+    to{
+        transform:translateY(120vh);
+    }
+}
+
+/* subtiel heen en weer */
+
+@keyframes drift{
+
+    0%{
+        margin-left:0px;
+    }
+
+    25%{
+        margin-left:8px;
+    }
+
+    50%{
+        margin-left:-6px;
+    }
+
+    75%{
+        margin-left:10px;
+    }
+
+    100%{
+        margin-left:0px;
+    }
+}
+
+/* kantelen */
+
+@keyframes spin{
+
+    0%{
+        rotate:0deg;
+    }
+
+    25%{
+        rotate:80deg;
+    }
+
+    50%{
+        rotate:-40deg;
+    }
+
+    75%{
+        rotate:120deg;
+    }
+
+    100%{
+        rotate:360deg;
+    }
+}
+
+/* alleen aan de randen */
+
+.p1{left:0.5%;top:-100px;animation-duration:18s,7s,11s;}
+.p2{left:1.5%;top:-300px;animation-duration:24s,8s,13s;}
+.p3{left:2.5%;top:-550px;animation-duration:21s,9s,15s;}
+.p4{left:3.5%;top:-850px;animation-duration:28s,6s,16s;}
+.p5{left:1%;top:-1150px;animation-duration:23s,8s,13s;}
+.p6{left:4%;top:-1450px;animation-duration:30s,10s,18s;}
+
+.p7{right:0.5%;top:-150px;animation-duration:19s,7s,11s;}
+.p8{right:1.5%;top:-450px;animation-duration:26s,8s,14s;}
+.p9{right:2.5%;top:-700px;animation-duration:22s,9s,15s;}
+.p10{right:3.5%;top:-1000px;animation-duration:29s,6s,16s;}
+.p11{right:1%;top:-1300px;animation-duration:24s,8s,13s;}
+.p12{right:4%;top:-1600px;animation-duration:31s,10s,18s;}
+
+/* =============================
+   CONTENT
+============================= */
 
 .hero{
 
     position:relative;
+    z-index:5;
 
-    min-height:900px;
+    min-height:100vh;
 
-    background-color:var(--bg);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
     text-align:center;
+
+    padding:40px 20px;
 }
 
-.arch{
+.kicker{
 
-    width:100%;
-
-    max-width:600px;
-
-    display:block;
-
-    margin:0 auto;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-size:13px;
 }
 
-/* Inhoud in de toog */
-
-.hero-content{
-
-    position:absolute;
-
-    top:140px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:100%;
-
-    max-width:500px;
-
-    padding:20px;
-}
-
-.hero-content h1{
-
-    font-size:4rem;
-
-    font-weight:400;
-
-    line-height:1.25;
-}
-
-.subtitle{
+h1{
 
     margin-top:20px;
 
-    letter-spacing:4px;
+    font-size:5rem;
 
-    font-size:14px;
+    font-weight:400;
 
-    color:var(--accent);
-
-    text-transform:uppercase;
+    line-height:1.15;
 }
 
 .date{
 
     margin-top:25px;
 
-    font-size:1.4rem;
+    font-size:1.3rem;
 }
-
-/* TIMER */
 
 .timer-grid{
 
-    margin-top:40px;
+    margin-top:45px;
 
     display:flex;
-
-    justify-content:center;
-
     gap:15px;
 
+    justify-content:center;
     flex-wrap:wrap;
 }
 
@@ -121,12 +245,12 @@ body{
 
     min-width:100px;
 
+    border-radius:18px;
+
     padding:18px;
 
-    border-radius:16px;
-
     box-shadow:
-    0 10px 25px rgba(0,0,0,.08);
+        0 12px 24px rgba(0,0,0,.06);
 }
 
 .timer-box span{
@@ -142,16 +266,17 @@ body{
 
 .timer-box small{
 
-    color:#888;
+    color:#8E8376;
 }
-
-/* SECTIES */
 
 .section{
 
+    position:relative;
+    z-index:5;
+
     max-width:900px;
 
-    margin:60px auto;
+    margin:0 auto 60px auto;
 
     padding:0 20px;
 }
@@ -167,7 +292,7 @@ body{
     text-align:center;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.06);
+        0 12px 30px rgba(0,0,0,.05);
 }
 
 .card h2{
@@ -180,11 +305,8 @@ body{
 }
 
 .card p{
-
     margin:10px 0;
 }
-
-/* FOOTER */
 
 .footer{
 
@@ -192,37 +314,25 @@ body{
 
     padding:60px 20px;
 
-    color:#8c7d6a;
-}
+    color:#9A8D7E;
 
-/* MOBIEL */
+    position:relative;
+    z-index:5;
+}
 
 @media(max-width:768px){
 
-    .hero{
-        min-height:820px;
-    }
-
-    .hero-content{
-
-        top:110px;
-    }
-
-    .hero-content h1{
-
-        font-size:2.7rem;
+    h1{
+        font-size:2.9rem;
     }
 
     .timer-box{
-
         min-width:80px;
     }
 
     .timer-box span{
-
         font-size:1.4rem;
     }
-
 }
 
 </style>
@@ -230,146 +340,131 @@ body{
 
 <body>
 
+<div class="petals">
+
+<div class="petal p1"></div>
+<div class="petal p2"></div>
+<div class="petal p3"></div>
+<div class="petal p4"></div>
+<div class="petal p5"></div>
+<div class="petal p6"></div>
+
+<div class="petal p7"></div>
+<div class="petal p8"></div>
+<div class="petal p9"></div>
+<div class="petal p10"></div>
+<div class="petal p11"></div>
+<div class="petal p12"></div>
+
+</div>
+
 <section class="hero">
 
-    arch.png
+<div class="kicker">
+Welkom op onze trouwwebsite
+</div>
 
-    <div class="hero-content">
+<h1>
+Samira<br>
+&
+<br>
+Youssef
+</h1>
 
-        <h1>
-            Samira<br>
-            &<br>
-            Youssef
-        </h1>
+<div class="date">
+10 januari 2027
+</div>
 
-        <div class="subtitle">
-            Bismillah
-        </div>
+<div class="timer-grid">
 
-        <div class="date">
-            10 januari 2027
-        </div>
+<div class="timer-box">
+<span id="days">0</span>
+<small>Dagen</small>
+</div>
 
-        <div class="timer-grid">
+<div class="timer-box">
+<span id="hours">0</span>
+<small>Uren</small>
+</div>
 
-            <div class="timer-box">
-                <span id="days">0</span>
-                <small>Dagen</small>
-            </div>
+<div class="timer-box">
+<span id="minutes">0</span>
+<small>Minuten</small>
+</div>
 
-            <div class="timer-box">
-                <span id="hours">0</span>
-                <small>Uren</small>
-            </div>
+<div class="timer-box">
+<span id="seconds">0</span>
+<small>Seconden</small>
+</div>
 
-            <div class="timer-box">
-                <span id="minutes">0</span>
-                <small>Minuten</small>
-            </div>
-
-            <div class="timer-box">
-                <span id="seconds">0</span>
-                <small>Seconden</small>
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 <section class="section">
 
-    <div class="card">
+<div class="card">
 
-        <h2>Locatie</h2>
+<h2>Locatie</h2>
 
-        <p>Marrakech Palace Rotterdam</p>
+<p>Marrakech Palace Rotterdam</p>
 
-        <p>
-            #
-                Route openen →
-            </a>
-        </p>
-
-    </div>
+</div>
 
 </section>
 
 <section class="section">
 
-    <div class="card">
+<div class="card">
 
-        <h2>Dagplanning</h2>
+<h2>Dagplanning</h2>
 
-        <p>13:00 Ontvangst</p>
-        <p>14:00 Ceremonie</p>
-        <p>18:00 Diner</p>
-        <p>20:00 Feest</p>
+<p>13:00 Ontvangst</p>
+<p>14:00 Ceremonie</p>
+<p>18:00 Diner</p>
+<p>20:00 Feest</p>
 
-    </div>
-
-</section>
-
-<section class="section">
-
-    <div class="card">
-
-        <h2>RSVP</h2>
-
-        <p>Laat ons weten of je aanwezig bent.</p>
-
-        <button>
-            Aanwezigheid Bevestigen
-        </button>
-
-    </div>
+</div>
 
 </section>
 
 <div class="footer">
-
-    Inviora
-
+Inviora
 </div>
 
 <script>
 
-const weddingDate =
-new Date("2027-01-10T12:00:00").getTime();
+const weddingDate = new Date("2027-01-10T12:00:00").getTime();
 
 function updateCountdown(){
 
-    const now = new Date().getTime();
+const now = new Date().getTime();
 
-    const difference = weddingDate - now;
+const diff = weddingDate - now;
 
-    const days =
-    Math.floor(difference / (1000 * 60 * 60 * 24));
+const days =
+Math.floor(diff / (1000*60*60*24));
 
-    const hours =
-    Math.floor((difference %
-    (1000 * 60 * 60 * 24))
-    / (1000 * 60 * 60));
+const hours =
+Math.floor((diff % (1000*60*60*24))
+/ (1000*60*60));
 
-    const minutes =
-    Math.floor((difference %
-    (1000 * 60 * 60))
-    / (1000 * 60));
+const minutes =
+Math.floor((diff % (1000*60*60))
+/ (1000*60));
 
-    const seconds =
-    Math.floor((difference %
-    (1000 * 60))
-    / 1000);
+const seconds =
+Math.floor((diff % (1000*60))
+/ 1000);
 
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
 }
 
 updateCountdown();
-
 setInterval(updateCountdown,1000);
 
 </script>
