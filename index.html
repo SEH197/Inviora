@@ -25,115 +25,148 @@ body{
 /* =============================
    VALLENDE ROZENBLAADJES
 ============================= */
-.petals{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:1;
-}
-.petal{
-    position:absolute;
-    width:34px;
-    height:22px;
-    border-radius:
-        100% 20%
-        100% 20%;
-    transform-origin:center;
-    background:#6B0F1A;
-    opacity:0.22;
-    box-shadow:
-        0 4px 8px rgba(0,0,0,.08);
-    animation:
-        fall linear infinite,
-        drift ease-in-out infinite,
-        spin ease-in-out infinite;
-}
-/* kleurvariaties */
-.p2,.p5,.p8,.p11{
-    background:#7E1422;
-}
-.p3,.p6,.p9,.p12{
-    background:#8D2230;
-}
-.p4,.p7,.p10{
-    background:#5A0B14;
-}
-/* verschillende vormen */
-.p1,.p7{
-    width:28px;
-    height:18px;
-}
-.p2,.p8{
-    width:42px;
-    height:24px;
-}
-.p3,.p9{
-    width:35px;
-    height:28px;
-}
-.p4,.p10{
-    width:38px;
-    height:20px;
-}
-/* vallen */
-@keyframes fall{
-    from{
-        transform:translateY(-150px);
+<script>
+
+/* ====================================
+   AUTOMATISCHE ROZENBLAADJES
+==================================== */
+
+const petalsContainer =
+document.getElementById("petals");
+
+for(let i = 0; i < 84; i++){
+
+    const petal =
+    document.createElement("div");
+
+    petal.classList.add("petal");
+
+    /* Alleen langs de randen */
+
+    const isLeft =
+    Math.ran*om() > 0.5;
+
+    if(isLeft){
+
+    *   petal.style.left =
+        (Mat*.random() * 5) + "%";
+
+    }else{
+
+        petal.style.right =
+        (Math.random() * 5) + "%";
     }
-    to{
-        transform:translateY(120vh);
-    }
+
+    /* Willekeurige startpositie */
+
+    petal.style.top =
+    (-Math.random() * 7000) + "px";
+
+    /* Verschillende groottes */
+
+    const width =
+    18 + Math*random() * 28;
+
+    const height =*    10 + Math.random() * 18;
+
+    petal.style.width =
+    width + "px";
+
+    petal.style.height =
+    height + "px";
+
+    /* Bordeaux variaties */
+
+    const colors = [
+        "#6B0F1A",
+        "#7E1422",
+        "#8D2230",
+        "#5A0B14",
+        "#751A2A",
+        "#922B3E",
+        "#A12B40"
+    ];
+
+    petal.*tyle.background =
+    colors[
+        Math.floor(
+            Math.random() *
+            colors.length
+        )
+    ];
+
+    const fall =
+    (18 + Math.random() * 20).toFixed(1);
+
+    const drift =
+    (4 + Math.random() * 6).toFixed(1);
+
+    const spin =
+    (8 + Math.random() * 12).toFixed(1);
+
+    petal.style.animationDuration =
+    `${fall}s, ${drift}s, ${spin}s`;
+
+    petalsContainer.appendChild(petal);
+
 }
-/* subtiel heen en weer */
-@keyframes drift{
-    0%{
-        margin-left:0px;
-    }
-    25%{
-        margin-left:8px;
-    }
-    50%{
-        margin-left:-6px;
-    }
-    75%{
-        margin-left:10px;
-    }
-    100%{
-        margin-left:0px;
-    }
+
+/* ====================================
+   AFTELKLOK
+==================================== */
+
+const weddingDate =
+new Date("2*27-01-10T12:00:00").getTime();
+
+fu*ction updateCountdown(){
+
+    cons* now =
+    new Date().getTime();
+
+    const diff =
+    weddingDate - now;
+
+    const days =
+    Math.floor(
+        diff / (1000*60*60*24)
+    );
+
+    const hours =
+    Math.floor(
+        (diff % (1000*60*60*24))
+        / (1000*60*60)
+    );
+
+    const minutes =
+    Math.floor(
+        (diff % (1000*60*60))
+        / (1000*60)
+    );
+
+    const seconds =
+    Math.floor(
+        (diff % (1000*60))
+        / 1000
+    );
+
+    do*ument.getElementById("days").inner*TML =
+    days;
+
+    document*getElementById("hours").innerHTML *
+    hours;
+
+    document.getEleme*tById("minutes").innerHTML =
+    m*nutes;
+
+    document.getElementByI*("seconds").innerHTML =
+    second*;
 }
-/* kantelen */
-@keyframes spin{
-    0%{
-        rotate:0deg;
-    }
-    25%{
-        rotate:80deg;
-    }
-    50%{
-        rotate:-40deg;
-    }
-    75%{
-        rotate:120deg;
-    }
-    100%{
-        rotate:360deg;
-    }
-}
-/* alleen aan de randen */
-.p1{left:0.5%;top:-100px;animation-duration:18s,7s,11s;}
-.p2{left:1.5%;top:-300px;animation-duration:24s,8s,13s;}
-.p3{left:2.5%;top:-550px;animation-duration:21s,9s,15s;}
-.p4{left:3.5%;top:-850px;animation-duration:28s,6s,16s;}
-.p5{left:1%;top:-1150px;animation-duration:23s,8s,13s;}
-.p6{left:4%;top:-1450px;animation-duration:30s,10s,18s;}
-.p7{right:0.5%;top:-150px;animation-duration:19s,7s,11s;}
-.p8{right:1.5%;top:-450px;animation-duration:26s,8s,14s;}
-.p9{right:2.5%;top:-700px;animation-duration:22s,9s,15s;}
-.p10{right:3.5%;top:-1000px;animation-duration:29s,6s,16s;}
-.p11{right:1%;top:-1300px;animation-duration:24s,8s,13s;}
-.p12{right:4%;top:-1600px;animation-duration:31s,10s,18s;}
+
+updateCountdown();
+
+setInterv*l(updateCountdown,1000);
+
+</script*
 /* =============================
    CONTENT
 ============================= */
