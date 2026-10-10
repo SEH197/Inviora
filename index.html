@@ -24,14 +24,12 @@
 }
 
 body{
-    font-family: "Georgia", serif;
+    font-family: Georgia, serif;
     background: var(--bg);
     color: var(--text);
     min-height:100vh;
     overflow-x:hidden;
 }
-
-/* Achtergrond patroon */
 
 body::before{
     content:"";
@@ -55,18 +53,14 @@ body::before{
 
     background-size:140px 140px;
 
-    z-index:-2;
+    z-index:-1;
 }
-
-/* Pagina */
 
 .wrapper{
     max-width:900px;
     margin:auto;
     padding:40px 20px;
 }
-
-/* Marokkaanse toog */
 
 .arch{
     position:relative;
@@ -89,10 +83,8 @@ body::before{
     450px 450px 25px 25px;
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,0.12);
+    0 20px 50px rgba(0,0,0,.12);
 }
-
-/* patroon in de toog */
 
 .arch::before{
     content:"✦ ✧ ✦ ✧ ✦ ✧ ✦";
@@ -111,25 +103,28 @@ body::before{
 }
 
 .arch-inner{
-    background:
-        repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,0.05),
-            rgba(255,255,255,0.05) 2px,
-            transparent 2px,
-            transparent 20px
-        );
+
+    background-color:#f7f2eb;
+
+    background-image:
+    linear-gradient(
+        45deg,
+        rgba(122,91,59,0.04) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(122,91,59,0.04) 50%,
+        rgba(122,91,59,0.04) 75%,
+        transparent 75%
+    );
+
+    background-size:50px 50px;
 
     border-radius:20px;
 
     padding:40px;
 
     text-align:center;
-
-    background-color:#f7f2eb;
 }
-
-/* Sterpatronen hoeken */
 
 .star{
     position:absolute;
@@ -157,20 +152,18 @@ body::before{
     right:45px;
 }
 
-/* Tekst */
-
 h1{
     font-size:4rem;
     line-height:1.2;
-    color:var(--brown-dark);
     font-weight:400;
+    color:var(--brown-dark);
 }
 
 .subtitle{
     margin-top:18px;
     color:#86684A;
-    font-size:1.2rem;
     letter-spacing:2px;
+    font-size:1.1rem;
 }
 
 .date{
@@ -178,17 +171,41 @@ h1{
     font-size:1.2rem;
 }
 
-#countdown{
-    margin-top:25px;
+.timer-grid{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin:30px 0;
+}
+
+.timer-box{
+
+    min-width:100px;
+
+    background:white;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+}
+
+.timer-box span{
+    display:block;
     font-size:2rem;
     font-weight:bold;
     color:#6B5034;
 }
 
-/* Kaarten */
+.timer-box small{
+    color:#8A735A;
+}
 
 .card{
-    margin-top:25px;
+    margin-top:20px;
 
     background:white;
 
@@ -201,15 +218,13 @@ h1{
 }
 
 .card h3{
-    margin-bottom:12px;
+    margin-bottom:10px;
     color:#775A3A;
 }
 
 .card p{
     margin:8px 0;
 }
-
-/* Footer */
 
 .footer{
     text-align:center;
@@ -220,18 +235,25 @@ h1{
 
 @media(max-width:768px){
 
-    h1{
-        font-size:2.8rem;
-    }
-
     .arch{
-        padding:40px 15px;
+        padding:30px 15px;
     }
 
     .arch-inner{
         padding:25px;
     }
 
+    h1{
+        font-size:2.7rem;
+    }
+
+    .timer-box{
+        min-width:80px;
+    }
+
+    .timer-box span{
+        font-size:1.4rem;
+    }
 }
 
 </style>
@@ -264,17 +286,41 @@ Bismillah
 26 juni 2027
 </div>
 
-<div id="countdown">
-Laden...
+<div class="timer-grid">
+
+    <div class="timer-box">
+        <span id="days">0</span>
+        <small>Dagen</small>
+    </div>
+
+    <div class="timer-box">
+        <span id="hours">0</span>
+        <small>Uren</small>
+    </div>
+
+    <div class="timer-box">
+        <span id="minutes">0</span>
+        <small>Minuten</small>
+    </div>
+
+    <div class="timer-box">
+        <span id="seconds">0</span>
+        <small>Seconden</small>
+    </div>
+
 </div>
 
 <div class="card">
-<h3>Locatie</h3>
+
+<h3>📍 Locatie</h3>
+
 <p>Marrakech Palace Rotterdam</p>
+
 </div>
 
 <div class="card">
-<h3>Dagplanning</h3>
+
+<h3>🕒 Dagplanning</h3>
 
 <p>13:00 Ontvangst</p>
 <p>14:00 Ceremonie</p>
@@ -295,7 +341,7 @@ Inviora
 
 <script>
 
-const weddingDate = new Date("2027-06-26T12:00:00").getTime();
+const weddingDate = new Date("2027-01-10T12:00:00").getTime();
 
 function updateCountdown(){
 
@@ -307,11 +353,30 @@ function updateCountdown(){
         difference / (1000 * 60 * 60 * 24)
     );
 
-    document.getElementById("countdown").innerHTML =
-    days + " dagen te gaan";
+    const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (difference % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (difference % (1000 * 60))
+        / 1000
+    );
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
 }
 
 updateCountdown();
+
 setInterval(updateCountdown,1000);
 
 </script>
