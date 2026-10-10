@@ -3,35 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Inviora</title>
-
 <style>
-
 :root{
     --bg:#F6F1EA;
     --text:#4F453B;
     --accent:#8E7862;
     --card:#FFFFFF;
 }
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
-
 body{
     background:var(--bg);
     color:var(--text);
     font-family:Georgia, serif;
     overflow-x:hidden;
 }
-
 /* =============================
    VALLENDE ROZENBLAADJES
 ============================= */
-
 .petals{
     position:fixed;
     inset:0;
@@ -39,553 +32,293 @@ body{
     overflow:hidden;
     z-index:1;
 }
-
-<script>
-
-/* ====================================
-   AUTOMATISCHE ROZENBLAADJES
-==================================== */
-
-const petalsContainer =
-document.getElementById("petals");
-
-for(let i = 0; i < 84; i++){
-
-    const petal =
-    document.createElement("div");
-
-    petal.classList.add("petal");
-
-    /* Alleen langs de randen */
-
-    const isLeft =
-    Math.ran*om() > 0.5;
-
-    if(isLeft){
-
-    *   petal.style.left =
-        (Mat*.random() * 5) + "%";
-
-    }else{
-
-        petal.style.right =
-        (Math.random() * 5) + "%";
-    }
-
-    /* Willekeurige startpositie */
-
-    petal.style.top =
-    (-Math.random() * 7000) + "px";
-
-    /* Verschillende groottes */
-
-    const width =
-    18 + Math*random() * 28;
-
-    const height =*    10 + Math.random() * 18;
-
-    petal.style.width =
-    width + "px";
-
-    petal.style.height =
-    height + "px";
-
-    /* Bordeaux variaties */
-
-    const colors = [
-        "#6B0F1A",
-        "#7E1422",
-        "#8D2230",
-        "#5A0B14",
-        "#751A2A",
-        "#922B3E",
-        "#A12B40"
-    ];
-
-    petal.*tyle.background =
-    colors[
-        Math.floor(
-            Math.random() *
-            colors.length
-        )
-    ];
-
-    const fall =
-    (18 + Math.random() * 20).toFixed(1);
-
-    const drift =
-    (4 + Math.random() * 6).toFixed(1);
-
-    const spin =
-    (8 + Math.random() * 12).toFixed(1);
-
-    petal.style.animationDuration =
-    `${fall}s, ${drift}s, ${spin}s`;
-
-    petalsContainer.appendChild(petal);
-
+.petal{
+    position:absolute;
+    width:34px;
+    height:22px;
+    border-radius:
+        100% 20%
+        100% 20%;
+    transform-origin:center;
+    background:#6B0F1A;
+    opacity:0.22;
+    box-shadow:
+        0 4px 8px rgba(0,0,0,.08);
+    animation:
+        fall linear infinite,
+        drift ease-in-out infinite,
+        spin ease-in-out infinite;
 }
-
-/* ====================================
-   AFTELKLOK
-==================================== */
-
-const weddingDate =
-new Date("2*27-01-10T12:00:00").getTime();
-
-fu*ction updateCountdown(){
-
-    cons* now =
-    new Date().getTime();
-
-    const diff =
-    weddingDate - now;
-
-    const days =
-    Math.floor(
-        diff / (1000*60*60*24)
-    );
-
-    const hours =
-    Math.floor(
-        (diff % (1000*60*60*24))
-        / (1000*60*60)
-    );
-
-    const minutes =
-    Math.floor(
-        (diff % (1000*60*60))
-        / (1000*60)
-    );
-
-    const seconds =
-    Math.floor(
-        (diff % (1000*60))
-        / 1000
-    );
-
-    do*ument.getElementById("days").inner*TML =
-    days;
-
-    document*getElementById("hours").innerHTML *
-    hours;
-
-    document.getEleme*tById("minutes").innerHTML =
-    m*nutes;
-
-    document.getElementByI*("seconds").innerHTML =
-    second*;
-}
-
-updateCountdown();
-
-setInterv*l(updateCountdown,1000);
-
-</script*
-}
-
 /* kleurvariaties */
-
 .p2,.p5,.p8,.p11{
     background:#7E1422;
 }
-
 .p3,.p6,.p9,.p12{
     background:#8D2230;
 }
-
 .p4,.p7,.p10{
     background:#5A0B14;
 }
-
 /* verschillende vormen */
-
 .p1,.p7{
     width:28px;
     height:18px;
 }
-
 .p2,.p8{
     width:42px;
     height:24px;
 }
-
 .p3,.p9{
     width:35px;
     height:28px;
 }
-
 .p4,.p10{
     width:38px;
     height:20px;
 }
-
 /* vallen */
-
 @keyframes fall{
-
     from{
         transform:translateY(-150px);
     }
-
     to{
         transform:translateY(120vh);
     }
 }
-
 /* subtiel heen en weer */
-
 @keyframes drift{
-
     0%{
         margin-left:0px;
     }
-
     25%{
         margin-left:8px;
     }
-
     50%{
         margin-left:-6px;
     }
-
     75%{
         margin-left:10px;
     }
-
     100%{
         margin-left:0px;
     }
 }
-
 /* kantelen */
-
 @keyframes spin{
-
     0%{
         rotate:0deg;
     }
-
     25%{
         rotate:80deg;
     }
-
     50%{
         rotate:-40deg;
     }
-
     75%{
         rotate:120deg;
     }
-
     100%{
         rotate:360deg;
     }
 }
-
 /* alleen aan de randen */
-
 .p1{left:0.5%;top:-100px;animation-duration:18s,7s,11s;}
 .p2{left:1.5%;top:-300px;animation-duration:24s,8s,13s;}
 .p3{left:2.5%;top:-550px;animation-duration:21s,9s,15s;}
 .p4{left:3.5%;top:-850px;animation-duration:28s,6s,16s;}
 .p5{left:1%;top:-1150px;animation-duration:23s,8s,13s;}
 .p6{left:4%;top:-1450px;animation-duration:30s,10s,18s;}
-
 .p7{right:0.5%;top:-150px;animation-duration:19s,7s,11s;}
 .p8{right:1.5%;top:-450px;animation-duration:26s,8s,14s;}
 .p9{right:2.5%;top:-700px;animation-duration:22s,9s,15s;}
 .p10{right:3.5%;top:-1000px;animation-duration:29s,6s,16s;}
 .p11{right:1%;top:-1300px;animation-duration:24s,8s,13s;}
 .p12{right:4%;top:-1600px;animation-duration:31s,10s,18s;}
-
 /* =============================
    CONTENT
 ============================= */
-
 .hero{
-
     position:relative;
     z-index:5;
-
     min-height:100vh;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     text-align:center;
-
     padding:40px 20px;
 }
-
 .kicker{
-
     letter-spacing:4px;
     text-transform:uppercase;
     color:var(--accent);
     font-size:13px;
 }
-
 h1{
-
     margin-top:20px;
-
     font-size:5rem;
-
     font-weight:400;
-
     line-height:1.15;
 }
-
 .date{
-
     margin-top:25px;
-
     font-size:1.3rem;
 }
-
 .timer-grid{
-
     margin-top:45px;
-
     display:flex;
     gap:15px;
-
     justify-content:center;
     flex-wrap:wrap;
 }
-
 .timer-box{
-
     background:white;
-
     min-width:100px;
-
     border-radius:18px;
-
     padding:18px;
-
     box-shadow:
         0 12px 24px rgba(0,0,0,.06);
 }
-
 .timer-box span{
-
     display:block;
-
     font-size:2rem;
-
     font-weight:bold;
-
     color:var(--accent);
 }
-
 .timer-box small{
-
     color:#8E8376;
 }
-
 .section{
-
     position:relative;
     z-index:5;
-
     max-width:900px;
-
     margin:0 auto 60px auto;
-
     padding:0 20px;
 }
-
 .card{
-
     background:white;
-
     border-radius:24px;
-
     padding:35px;
-
     text-align:center;
-
     box-shadow:
         0 12px 30px rgba(0,0,0,.05);
 }
-
 .card h2{
-
     color:var(--accent);
-
     margin-bottom:20px;
-
     font-weight:400;
 }
-
 .card p{
     margin:10px 0;
 }
-
 .footer{
-
     text-align:center;
-
     padding:60px 20px;
-
     color:#9A8D7E;
-
     position:relative;
     z-index:5;
 }
-
 @media(max-width:768px){
-
     h1{
         font-size:2.9rem;
     }
-
     .timer-box{
         min-width:80px;
     }
-
     .timer-box span{
         font-size:1.4rem;
     }
 }
-
 </style>
 </head>
-
 <body>
-
 <div class="petals">
-
 <div class="petal p1"></div>
 <div class="petal p2"></div>
 <div class="petal p3"></div>
 <div class="petal p4"></div>
 <div class="petal p5"></div>
 <div class="petal p6"></div>
-
 <div class="petal p7"></div>
 <div class="petal p8"></div>
 <div class="petal p9"></div>
 <div class="petal p10"></div>
 <div class="petal p11"></div>
 <div class="petal p12"></div>
-
 </div>
-
 <section class="hero">
-
 <div class="kicker">
 Welkom op onze trouwwebsite
 </div>
-
 <h1>
 Samira<br>
 &
 <br>
 Youssef
 </h1>
-
 <div class="date">
 10 januari 2027
 </div>
-
 <div class="timer-grid">
-
 <div class="timer-box">
 <span id="days">0</span>
 <small>Dagen</small>
 </div>
-
 <div class="timer-box">
 <span id="hours">0</span>
 <small>Uren</small>
 </div>
-
 <div class="timer-box">
 <span id="minutes">0</span>
 <small>Minuten</small>
 </div>
-
 <div class="timer-box">
 <span id="seconds">0</span>
 <small>Seconden</small>
 </div>
-
 </div>
-
 </section>
-
 <section class="section">
-
 <div class="card">
-
 <h2>Locatie</h2>
-
 <p>Marrakech Palace Rotterdam</p>
-
 </div>
-
 </section>
-
 <section class="section">
-
 <div class="card">
-
 <h2>Dagplanning</h2>
-
 <p>13:00 Ontvangst</p>
 <p>14:00 Ceremonie</p>
 <p>18:00 Diner</p>
 <p>20:00 Feest</p>
-
 </div>
-
 </section>
-
 <div class="footer">
 Inviora
 </div>
-
 <script>
-
 const weddingDate = new Date("2027-01-10T12:00:00").getTime();
-
 function updateCountdown(){
-
 const now = new Date().getTime();
-
 const diff = weddingDate - now;
-
 const days =
 Math.floor(diff / (1000*60*60*24));
-
 const hours =
 Math.floor((diff % (1000*60*60*24))
 / (1000*60*60));
-
 const minutes =
 Math.floor((diff % (1000*60*60))
 / (1000*60));
-
 const seconds =
 Math.floor((diff % (1000*60))
 / 1000);
-
 document.getElementById("days").innerHTML = days;
 document.getElementById("hours").innerHTML = hours;
 document.getElementById("minutes").innerHTML = minutes;
 document.getElementById("seconds").innerHTML = seconds;
-
 }
-
 updateCountdown();
 setInterval(updateCountdown,1000);
-
 </script>
-
 </body>
 </html>
