@@ -1,0 +1,122 @@
+<div class="henna-invite">
+
+  <!-- Draaiende mandala's -->
+  <img
+    src="images/mandala-gold.svg"
+    class="mandala mandala-left"
+    alt=""
+  >
+
+  <img
+    src="images/mandala-gold.svg"
+    class="mandala mandala-right"
+    alt=""
+  >
+
+  <main class="invitation-content">
+
+    <p class="eyebrow">YOU'RE INVITED TO A</p>
+
+    <h1>HENNA NIGHT</h1>
+
+    <div class="divider">
+      <span></span>
+      <span class="diamond">✦</span>
+      <span></span>
+    </div>
+
+    <p class="subtitle">
+      EEN AVOND VOL TRADITIE,<br>
+      LIEFDE &amp; SAMENZIJN
+    </p>
+
+    <div class="names">
+      Lina<br>
+      <span>&amp; Adam</span>
+    </div>
+
+    <section class="date-row">
+      <div>
+        <span>VRIJDAG</span>
+      </div>
+
+      <div class="date">
+        <strong>18</strong>
+        <span>JUNI 2027</span>
+      </div>
+
+      <div>
+        <span>VANAF</span>
+        <strong class="time">19:00 UUR</strong>
+      </div>
+    </section>
+
+    <p class="intro">
+      Met veel plezier nodigen wij jullie uit voor ons hennafeest.
+      Een bijzondere avond om de liefde te vieren, omringd door
+      familie, vrienden en mooie tradities.
+    </p>
+
+    <section class="program">
+      <h2>PROGRAMMA</h2>
+
+      <div class="program-grid">
+
+        <div class="program-item">
+          <strong>19:00</strong>
+          <span>ONTVANGST</span>
+        </div>
+
+        <div class="program-item">
+          <strong>19:30</strong>
+          <span>HENNA CEREMONIE</span>
+        </div>
+
+        <div class="program-item">
+          <strong>21:00</strong>
+          <span>DINER</span>
+        </div>
+
+        <div class="program-item">
+          <strong>22:30</strong>
+          <span>FEEST</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="details">
+
+      <div>
+        <h3>LOCATIE</h3>
+        <p>
+          Zaal De Linde<br>
+          Lindenlaan 12<br>
+          2611 AB Delft
+        </p>
+      </div>
+
+      <div>
+        <h3>DRESSCODE</h3>
+        <p>
+          Traditioneel &amp; feestelijk<br>
+          (kleur is liefde)
+        </p>
+      </div>
+
+      <div>
+        <h3>PARKEREN</h3>
+        <p>
+          Gratis parkeren<br>
+          bij de locatie
+        </p>
+      </div>
+
+    </section>
+
+    <footer>
+      WE KIJKEN ERNAAR UIT JULLIE TE ZIEN!
+    </footer>
+
+  </main>
+</div>
