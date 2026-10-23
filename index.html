@@ -123,19 +123,13 @@ body{
 
 .arch{
     position:absolute;
-
     top:0;
-    left:50%;
+    left:0;
 
-    transform:translateX(-50%);
+    width:100vw;
+    height:auto;
 
-    width:auto;
-    height:100vh;
-
-    max-width:none;
-
-    object-fit:contain;
-    object-position:top center;
+    display:block;
 
     z-index:10;
 
@@ -403,19 +397,7 @@ body{
         padding:20px 14px;
     }
 
-    /*
-       Toog vult schermhoogte.
-       Hierdoor blijft de opening
-       zo groot mogelijk.
-    */
 
-    .arch{
-        height:100svh;
-
-        width:auto;
-
-        max-width:none;
-    }
 
     .hero-content{
         max-width:90%;
