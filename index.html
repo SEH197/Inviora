@@ -9,6 +9,10 @@
 
 <style>
 
+/* =====================
+   BASIS
+===================== */
+
 :root{
     --bg:#F6F1EA;
     --text:#4F453B;
@@ -28,7 +32,7 @@ html{
 body{
     background:var(--bg);
     color:var(--text);
-    font-family:Georgia, serif;
+    font-family:Georgia, "Times New Roman", serif;
     overflow-x:hidden;
 }
 
@@ -65,6 +69,7 @@ body{
 }
 
 @keyframes fall{
+
     from{
         translate:0 -150px;
         rotate:0deg;
@@ -77,6 +82,7 @@ body{
 }
 
 @keyframes sway{
+
     0%{
         margin-left:0;
     }
@@ -109,6 +115,7 @@ body{
 
     min-height:100vh;
     max-width:1200px;
+
     margin:0 auto;
 
     display:flex;
@@ -121,6 +128,9 @@ body{
     padding:60px 20px;
 }
 
+
+/* subtiel ornament achter namen */
+
 .hero::before{
     content:"❋";
 
@@ -132,34 +142,107 @@ body{
     transform:translate(-50%,-50%);
 
     font-size:550px;
+    line-height:1;
 
-    color:rgba(142,120,98,0.05);
+    color:rgba(142,120,98,.045);
 
     z-index:-1;
 
     pointer-events:none;
-
-    line-height:1;
 }
+
+
+/* kleine bovenregel */
 
 .kicker{
-    letter-spacing:4px;
+    font-family:Georgia, "Times New Roman", serif;
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
     text-transform:uppercase;
+
     color:var(--accent);
-    font-size:13px;
+
+    margin-bottom:30px;
 }
 
-h1{
-    margin-top:22px;
 
-    font-size:5rem;
+/* namen */
+
+.hero-names{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    line-height:.9;
+}
+
+.name{
+    font-family:Georgia, "Times New Roman", serif;
+
+    font-size:5.4rem;
+
     font-weight:400;
-    line-height:1.1;
+
+    letter-spacing:-2px;
+}
+
+
+/* & teken */
+
+.ampersand{
+    font-family:Georgia, "Times New Roman", serif;
+
+    font-size:2.3rem;
+
+    font-weight:400;
+
+    font-style:italic;
+
+    color:var(--accent);
+
+    line-height:1.4;
+
+    margin:6px 0;
+}
+
+
+/* datum + sierlijnen */
+
+.date-line{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:38px;
+}
+
+.date-line > span{
+    width:55px;
+
+    height:1px;
+
+    background:rgba(142,120,98,.45);
 }
 
 .date{
-    margin-top:25px;
-    font-size:1.3rem;
+    font-size:.9rem;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--accent);
+
+    white-space:nowrap;
 }
 
 
@@ -171,9 +254,11 @@ h1{
     margin-top:45px;
 
     display:flex;
+
     gap:15px;
 
     justify-content:center;
+
     flex-wrap:wrap;
 }
 
@@ -194,6 +279,7 @@ h1{
     display:block;
 
     font-size:2rem;
+
     font-weight:bold;
 
     color:var(--accent);
@@ -210,6 +296,7 @@ h1{
 
 .section{
     position:relative;
+
     z-index:5;
 
     max-width:900px;
@@ -270,6 +357,7 @@ h1{
 
     .hero{
         min-height:100svh;
+
         padding:45px 18px;
     }
 
@@ -278,28 +366,57 @@ h1{
     }
 
     .kicker{
-        font-size:11px;
-        letter-spacing:3px;
+        font-size:9px;
+
+        letter-spacing:4px;
+
+        margin-bottom:25px;
     }
 
-    h1{
-        font-size:3.1rem;
-        line-height:1.08;
+    .name{
+        font-size:3.7rem;
+
+        letter-spacing:-1px;
+    }
+
+    .ampersand{
+        font-size:1.8rem;
+
+        margin:7px 0;
+    }
+
+    .date-line{
+        gap:12px;
+
+        margin-top:30px;
+    }
+
+    .date-line > span{
+        width:30px;
     }
 
     .date{
-        font-size:1.05rem;
+        font-size:.72rem;
+
+        letter-spacing:2px;
     }
+
+
+    /* COUNTDOWN MOBIEL */
 
     .timer-grid{
         width:100%;
+
         gap:8px;
 
         flex-wrap:nowrap;
+
+        margin-top:40px;
     }
 
     .timer-box{
         min-width:0;
+
         flex:1;
 
         padding:14px 5px;
@@ -315,24 +432,45 @@ h1{
         font-size:.67rem;
     }
 
+
+    /* CONTENT MOBIEL */
+
     .section{
         margin-bottom:30px;
+
         padding:0 16px;
     }
 
     .card{
         padding:28px 20px;
+
         border-radius:20px;
     }
 }
 
 
-/* Zeer kleine telefoons */
+/* =====================
+   KLEINE TELEFOONS
+===================== */
 
 @media(max-width:380px){
 
-    h1{
-        font-size:2.6rem;
+    .name{
+        font-size:3.1rem;
+    }
+
+    .ampersand{
+        font-size:1.6rem;
+    }
+
+    .date-line > span{
+        width:22px;
+    }
+
+    .date{
+        font-size:.67rem;
+
+        letter-spacing:1.5px;
     }
 
     .timer-box span{
@@ -345,52 +483,98 @@ h1{
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
+<!-- =====================
+     BLAADJES
+===================== -->
+
 <div class="petals" id="petals"></div>
 
+
+<!-- =====================
+     HERO
+===================== -->
 
 <section class="hero">
 
     <div class="kicker">
-        Welkom op onze trouwwebsite
+        Wij gaan trouwen
     </div>
 
-    <h1>
-        Samira<br>
-        &amp;<br>
-        Youssef
-    </h1>
 
-    <div class="date">
-        10 januari 2027
+    <div class="hero-names">
+
+        <span class="name">
+            Samira
+        </span>
+
+        <span class="ampersand">
+            &amp;
+        </span>
+
+        <span class="name">
+            Youssef
+        </span>
+
     </div>
 
+
+    <div class="date-line">
+
+        <span></span>
+
+        <div class="date">
+            10 januari 2027
+        </div>
+
+        <span></span>
+
+    </div>
+
+
+    <!-- COUNTDOWN -->
 
     <div class="timer-grid">
 
         <div class="timer-box">
+
             <span id="days">0</span>
+
             <small>Dagen</small>
+
         </div>
 
+
         <div class="timer-box">
+
             <span id="hours">0</span>
+
             <small>Uren</small>
+
         </div>
 
+
         <div class="timer-box">
+
             <span id="minutes">0</span>
+
             <small>Minuten</small>
+
         </div>
+
 
         <div class="timer-box">
+
             <span id="seconds">0</span>
+
             <small>Seconden</small>
+
         </div>
 
     </div>
@@ -398,34 +582,55 @@ h1{
 </section>
 
 
+<!-- =====================
+     LOCATIE
+===================== -->
+
 <section class="section">
 
     <div class="card">
 
-        <h2>Locatie</h2>
+        <h2>
+            Locatie
+        </h2>
 
-        <p>Marrakech Palace Rotterdam</p>
+        <p>
+            Marrakech Palace Rotterdam
+        </p>
 
     </div>
 
 </section>
 
 
+<!-- =====================
+     DAGPLANNING
+===================== -->
+
 <section class="section">
 
     <div class="card">
 
-        <h2>Dagplanning</h2>
+        <h2>
+            Dagplanning
+        </h2>
 
         <p>13:00 Ontvangst</p>
+
         <p>14:00 Ceremonie</p>
+
         <p>18:00 Diner</p>
+
         <p>20:00 Feest</p>
 
     </div>
 
 </section>
 
+
+<!-- =====================
+     FOOTER
+===================== -->
 
 <div class="footer">
     Inviora
@@ -441,20 +646,31 @@ h1{
 const petalsContainer =
     document.getElementById("petals");
 
+
 const colors = [
+
     "#6B0F1A",
+
     "#7E1422",
+
     "#8D2230",
+
     "#5A0B14",
+
     "#751A2A",
+
     "#922B3E",
+
     "#A12B40"
+
 ];
+
 
 for(let i = 0; i < 80; i++){
 
     const petal =
         document.createElement("div");
+
 
     petal.classList.add("petal");
 
@@ -472,6 +688,7 @@ for(let i = 0; i < 80; i++){
 
         petal.style.right =
             (Math.random() * 18) + "%";
+
     }
 
 
@@ -481,6 +698,7 @@ for(let i = 0; i < 80; i++){
 
     petal.style.width =
         (18 + Math.random() * 28) + "px";
+
 
     petal.style.height =
         (10 + Math.random() * 18) + "px";
@@ -500,6 +718,7 @@ for(let i = 0; i < 80; i++){
 
 
     petalsContainer.appendChild(petal);
+
 }
 
 
@@ -516,30 +735,41 @@ function updateCountdown(){
     const now =
         new Date().getTime();
 
+
     const diff =
         weddingDate - now;
 
 
     if(diff <= 0){
 
-        document.getElementById("days").textContent = "0";
-        document.getElementById("hours").textContent = "0";
-        document.getElementById("minutes").textContent = "0";
-        document.getElementById("seconds").textContent = "0";
+        document.getElementById("days").textContent =
+            "0";
+
+        document.getElementById("hours").textContent =
+            "0";
+
+        document.getElementById("minutes").textContent =
+            "0";
+
+        document.getElementById("seconds").textContent =
+            "0";
 
         return;
+
     }
 
 
     const days =
         Math.floor(
-            diff / (1000 * 60 * 60 * 24)
+            diff /
+            (1000 * 60 * 60 * 24)
         );
 
 
     const hours =
         Math.floor(
-            (diff % (1000 * 60 * 60 * 24))
+            (diff %
+            (1000 * 60 * 60 * 24))
             /
             (1000 * 60 * 60)
         );
@@ -547,7 +777,8 @@ function updateCountdown(){
 
     const minutes =
         Math.floor(
-            (diff % (1000 * 60 * 60))
+            (diff %
+            (1000 * 60 * 60))
             /
             (1000 * 60)
         );
@@ -555,7 +786,8 @@ function updateCountdown(){
 
     const seconds =
         Math.floor(
-            (diff % (1000 * 60))
+            (diff %
+            (1000 * 60))
             /
             1000
         );
@@ -564,18 +796,23 @@ function updateCountdown(){
     document.getElementById("days").textContent =
         days;
 
+
     document.getElementById("hours").textContent =
         hours;
+
 
     document.getElementById("minutes").textContent =
         minutes;
 
+
     document.getElementById("seconds").textContent =
         seconds;
+
 }
 
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
