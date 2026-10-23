@@ -21,12 +21,17 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     background:var(--bg);
     color:var(--text);
     font-family:Georgia, serif;
     overflow-x:hidden;
 }
+
 
 /* =====================
    BLAADJES
@@ -41,7 +46,6 @@ body{
 }
 
 .petal{
-
     position:absolute;
 
     border-radius:
@@ -55,73 +59,69 @@ body{
 
     animation:
         fall linear infinite,
-        drift ease-in-out infinite,
-        spin ease-in-out infinite;
+        sway ease-in-out infinite;
+
+    transform-origin:center;
 }
 
 @keyframes fall{
-
     from{
-        transform:
-        translateY(-150px);
-    }
-
-    to{
-        transform:
-        translateY(120vh);
-    }
-}
-
-@keyframes drift{
-
-    0%{
-        transform:
-        translateX(0px);
-    }
-
-    25%{
-        transform:
-        translateX(5px);
-    }
-
-    50%{
-        transform:
-        translateX(-4px);
-    }
-
-    75%{
-        transform:
-        translateX(6px);
-    }
-
-    100%{
-        transform:
-        translateX(0px);
-    }
-}
-
-
-@keyframes spin{
-
-    0%{
+        translate:0 -150px;
         rotate:0deg;
     }
 
-    50%{
-        rotate:180deg;
-    }
-
-    100%{
+    to{
+        translate:0 120vh;
         rotate:360deg;
     }
 }
 
+@keyframes sway{
+    0%{
+        margin-left:0;
+    }
+
+    25%{
+        margin-left:8px;
+    }
+
+    50%{
+        margin-left:-6px;
+    }
+
+    75%{
+        margin-left:10px;
+    }
+
+    100%{
+        margin-left:0;
+    }
+}
+
+
 /* =====================
-   CONTENT
+   HERO
 ===================== */
 
-.hero::before{
+.hero{
+    position:relative;
+    z-index:5;
 
+    min-height:100vh;
+    max-width:1200px;
+    margin:0 auto;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:60px 20px;
+}
+
+.hero::before{
     content:"❋";
 
     position:absolute;
@@ -141,68 +141,43 @@ body{
 
     line-height:1;
 }
-    position:relative;
-    z-index:5;
-
-    min-height:100vh;
-
-    max-width:1200px;
-    margin:auto;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    padding:40px 20px;
-}
 
 .kicker{
-
     letter-spacing:4px;
-
     text-transform:uppercase;
-
     color:var(--accent);
-
     font-size:13px;
 }
 
 h1{
-
-    margin-top:20px;
+    margin-top:22px;
 
     font-size:5rem;
-
     font-weight:400;
-
-    line-height:1.15;
+    line-height:1.1;
 }
 
 .date{
-
     margin-top:25px;
-
     font-size:1.3rem;
 }
 
-.timer-grid{
 
+/* =====================
+   COUNTDOWN
+===================== */
+
+.timer-grid{
     margin-top:45px;
 
     display:flex;
-
     gap:15px;
 
     justify-content:center;
-
     flex-wrap:wrap;
 }
 
 .timer-box{
-
     background:white;
 
     min-width:100px;
@@ -216,25 +191,25 @@ h1{
 }
 
 .timer-box span{
-
     display:block;
 
     font-size:2rem;
-
     font-weight:bold;
 
     color:var(--accent);
 }
 
 .timer-box small{
-
     color:#8E8376;
 }
 
+
+/* =====================
+   CONTENT
+===================== */
+
 .section{
-
     position:relative;
-
     z-index:5;
 
     max-width:900px;
@@ -245,7 +220,6 @@ h1{
 }
 
 .card{
-
     background:white;
 
     border-radius:24px;
@@ -259,7 +233,6 @@ h1{
 }
 
 .card h2{
-
     color:var(--accent);
 
     margin-bottom:20px;
@@ -271,8 +244,12 @@ h1{
     margin:10px 0;
 }
 
-.footer{
 
+/* =====================
+   FOOTER
+===================== */
+
+.footer{
     position:relative;
 
     z-index:5;
@@ -284,214 +261,329 @@ h1{
     color:#9A8D7E;
 }
 
+
+/* =====================
+   MOBIEL
+===================== */
+
 @media(max-width:768px){
 
+    .hero{
+        min-height:100svh;
+        padding:45px 18px;
+    }
+
+    .hero::before{
+        font-size:330px;
+    }
+
+    .kicker{
+        font-size:11px;
+        letter-spacing:3px;
+    }
+
     h1{
-        font-size:2.9rem;
+        font-size:3.1rem;
+        line-height:1.08;
+    }
+
+    .date{
+        font-size:1.05rem;
+    }
+
+    .timer-grid{
+        width:100%;
+        gap:8px;
+
+        flex-wrap:nowrap;
     }
 
     .timer-box{
-        min-width:80px;
+        min-width:0;
+        flex:1;
+
+        padding:14px 5px;
+
+        border-radius:14px;
     }
 
     .timer-box span{
         font-size:1.4rem;
     }
+
+    .timer-box small{
+        font-size:.67rem;
+    }
+
+    .section{
+        margin-bottom:30px;
+        padding:0 16px;
+    }
+
+    .card{
+        padding:28px 20px;
+        border-radius:20px;
+    }
+}
+
+
+/* Zeer kleine telefoons */
+
+@media(max-width:380px){
+
+    h1{
+        font-size:2.6rem;
+    }
+
+    .timer-box span{
+        font-size:1.25rem;
+    }
+
+    .timer-box small{
+        font-size:.6rem;
+    }
 }
 
 </style>
-
 </head>
+
 
 <body>
 
+
 <div class="petals" id="petals"></div>
+
 
 <section class="hero">
 
-<div class="kicker">
-Welkom op onze trouwwebsite
-</div>
+    <div class="kicker">
+        Welkom op onze trouwwebsite
+    </div>
 
-<h1>
-Samira<br>
-&
-<br>
-Youssef
-</h1>
+    <h1>
+        Samira<br>
+        &amp;<br>
+        Youssef
+    </h1>
 
-<div class="date">
-10 januari 2027
-</div>
+    <div class="date">
+        10 januari 2027
+    </div>
 
-<div class="timer-grid">
 
-<div class="timer-box">
-<span id="days">0</span>
-<small>Dagen</small>
-</div>
+    <div class="timer-grid">
 
-<div class="timer-box">
-<span id="hours">0</span>
-<small>Uren</small>
-</div>
+        <div class="timer-box">
+            <span id="days">0</span>
+            <small>Dagen</small>
+        </div>
 
-<div class="timer-box">
-<span id="minutes">0</span>
-<small>Minuten</small>
-</div>
+        <div class="timer-box">
+            <span id="hours">0</span>
+            <small>Uren</small>
+        </div>
 
-<div class="timer-box">
-<span id="seconds">0</span>
-<small>Seconden</small>
-</div>
+        <div class="timer-box">
+            <span id="minutes">0</span>
+            <small>Minuten</small>
+        </div>
 
-</div>
+        <div class="timer-box">
+            <span id="seconds">0</span>
+            <small>Seconden</small>
+        </div>
+
+    </div>
 
 </section>
+
 
 <section class="section">
 
-<div class="card">
+    <div class="card">
 
-<h2>Locatie</h2>
+        <h2>Locatie</h2>
 
-<p>Marrakech Palace Rotterdam</p>
+        <p>Marrakech Palace Rotterdam</p>
 
-</div>
+    </div>
 
 </section>
+
 
 <section class="section">
 
-<div class="card">
+    <div class="card">
 
-<h2>Dagplanning</h2>
+        <h2>Dagplanning</h2>
 
-<p>13:00 Ontvangst</p>
-<p>14:00 Ceremonie</p>
-<p>18:00 Diner</p>
-<p>20:00 Feest</p>
+        <p>13:00 Ontvangst</p>
+        <p>14:00 Ceremonie</p>
+        <p>18:00 Diner</p>
+        <p>20:00 Feest</p>
 
-</div>
+    </div>
 
 </section>
+
 
 <div class="footer">
-Inviora
+    Inviora
 </div>
+
 
 <script>
 
-/* 250 BLAADJES */
+/* =====================
+   BLAADJES
+===================== */
 
 const petalsContainer =
-document.getElementById("petals");
+    document.getElementById("petals");
 
-for(let i = 0; i < 250; i++){
+const colors = [
+    "#6B0F1A",
+    "#7E1422",
+    "#8D2230",
+    "#5A0B14",
+    "#751A2A",
+    "#922B3E",
+    "#A12B40"
+];
+
+for(let i = 0; i < 80; i++){
 
     const petal =
-    document.createElement("div");
+        document.createElement("div");
 
     petal.classList.add("petal");
 
+
     const isLeft =
-    Math.random() > 0.5;
+        Math.random() > 0.5;
+
 
     if(isLeft){
 
         petal.style.left =
-        (Math.random()*15)+"%";
+            (Math.random() * 18) + "%";
 
     }else{
 
         petal.style.right =
-        (Math.random()*15)+"%";
+            (Math.random() * 18) + "%";
     }
 
+
     petal.style.top =
-    (-Math.random()*9000)+"px";
+        (-Math.random() * 3000) + "px";
+
 
     petal.style.width =
-    (18+Math.random()*28)+"px";
+        (18 + Math.random() * 28) + "px";
 
     petal.style.height =
-    (10+Math.random()*18)+"px";
+        (10 + Math.random() * 18) + "px";
 
-    const colors = [
-        "#6B0F1A",
-        "#7E1422",
-        "#8D2230",
-        "#5A0B14",
-        "#751A2A",
-        "#922B3E",
-        "#A12B40"
-    ];
 
     petal.style.background =
-    colors[
-        Math.floor(
-            Math.random()*colors.length
-        )
-    ];
+        colors[
+            Math.floor(
+                Math.random() * colors.length
+            )
+        ];
+
 
     petal.style.animationDuration =
-    `${18+Math.random()*7}s,
-     ${4+Math.random()*3}s,
-     ${8+Math.random()*6}s`;
+        `${18 + Math.random() * 9}s,
+         ${4 + Math.random() * 3}s`;
+
 
     petalsContainer.appendChild(petal);
 }
 
-/* TIMER */
+
+/* =====================
+   COUNTDOWN
+===================== */
 
 const weddingDate =
-new Date("2027-01-10T12:00:00").getTime();
+    new Date("2027-01-10T12:00:00").getTime();
+
 
 function updateCountdown(){
 
-const now =
-new Date().getTime();
+    const now =
+        new Date().getTime();
 
-const diff =
-weddingDate - now;
+    const diff =
+        weddingDate - now;
 
-const days =
-Math.floor(diff/(1000*60*60*24));
 
-const hours =
-Math.floor(
-(diff%(1000*60*60*24))
-/
-(1000*60*60)
-);
+    if(diff <= 0){
 
-const minutes =
-Math.floor(
-(diff%(1000*60*60))
-/
-(1000*60)
-);
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
 
-const seconds =
-Math.floor(
-(diff%(1000*60))
-/
-1000
-);
+        return;
+    }
 
-document.getElementById("days").innerHTML = days;
-document.getElementById("hours").innerHTML = hours;
-document.getElementById("minutes").innerHTML = minutes;
-document.getElementById("seconds").innerHTML = seconds;
 
+    const days =
+        Math.floor(
+            diff / (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (diff % (1000 * 60 * 60 * 24))
+            /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (diff % (1000 * 60 * 60))
+            /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (diff % (1000 * 60))
+            /
+            1000
+        );
+
+
+    document.getElementById("days").textContent =
+        days;
+
+    document.getElementById("hours").textContent =
+        hours;
+
+    document.getElementById("minutes").textContent =
+        minutes;
+
+    document.getElementById("seconds").textContent =
+        seconds;
 }
+
 
 updateCountdown();
 
-setInterval(updateCountdown,1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
 </script>
+
 
 </body>
 </html>
