@@ -17,6 +17,7 @@
     --bg:#F6F1EA;
     --text:#4F453B;
     --accent:#8E7862;
+    --white:#FFFCF8;
 }
 
 *{
@@ -46,7 +47,7 @@ body{
     inset:0;
     overflow:hidden;
     pointer-events:none;
-    z-index:1;
+    z-index:20;
 }
 
 .petal{
@@ -83,25 +84,15 @@ body{
 
 @keyframes sway{
 
-    0%{
-        margin-left:0;
-    }
+    0%{ margin-left:0; }
 
-    25%{
-        margin-left:8px;
-    }
+    25%{ margin-left:8px; }
 
-    50%{
-        margin-left:-6px;
-    }
+    50%{ margin-left:-6px; }
 
-    75%{
-        margin-left:10px;
-    }
+    75%{ margin-left:10px; }
 
-    100%{
-        margin-left:0;
-    }
+    100%{ margin-left:0; }
 }
 
 
@@ -111,12 +102,56 @@ body{
 
 .hero{
     position:relative;
-    z-index:5;
 
     min-height:100vh;
-    max-width:1200px;
 
-    margin:0 auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    padding:20px;
+
+    isolation:isolate;
+}
+
+
+/* =====================
+   ALHAMBRA TOOG
+===================== */
+
+.arch{
+    position:absolute;
+
+    top:0;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:auto;
+    height:100vh;
+
+    max-width:none;
+
+    object-fit:contain;
+    object-position:top center;
+
+    z-index:2;
+
+    pointer-events:none;
+    user-select:none;
+}
+
+
+/* =====================
+   HERO INHOUD
+===================== */
+
+.hero-content{
+    position:relative;
+
+    z-index:5;
 
     display:flex;
     flex-direction:column;
@@ -125,39 +160,23 @@ body{
 
     text-align:center;
 
-    padding:60px 20px;
+    width:100%;
+    max-width:600px;
+
+    /*
+       Iets naar beneden omdat
+       bovenkant toog visueel zwaar is
+    */
+    padding-top:5vh;
 }
 
 
-/* subtiel ornament achter namen */
-
-.hero::before{
-    content:"❋";
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    font-size:550px;
-    line-height:1;
-
-    color:rgba(142,120,98,.045);
-
-    z-index:-1;
-
-    pointer-events:none;
-}
-
-
-/* kleine bovenregel */
+/* =====================
+   BOVENREGEL
+===================== */
 
 .kicker{
-    font-family:Georgia, "Times New Roman", serif;
-
-    font-size:11px;
+    font-size:10px;
 
     letter-spacing:5px;
 
@@ -165,11 +184,13 @@ body{
 
     color:var(--accent);
 
-    margin-bottom:30px;
+    margin-bottom:27px;
 }
 
 
-/* namen */
+/* =====================
+   NAMEN
+===================== */
 
 .hero-names{
     display:flex;
@@ -178,40 +199,47 @@ body{
 
     align-items:center;
 
-    line-height:.9;
+    line-height:.88;
 }
 
 .name{
-    font-family:Georgia, "Times New Roman", serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-    font-size:5.4rem;
+    font-size:5.2rem;
 
     font-weight:400;
 
     letter-spacing:-2px;
+
+    color:var(--text);
 }
 
 
-/* & teken */
+/* =====================
+   AMPERSAND
+===================== */
 
 .ampersand{
-    font-family:Georgia, "Times New Roman", serif;
-
-    font-size:2.3rem;
-
-    font-weight:400;
+    font-size:2.1rem;
 
     font-style:italic;
 
+    font-weight:400;
+
     color:var(--accent);
 
-    line-height:1.4;
+    line-height:1.5;
 
-    margin:6px 0;
+    margin:8px 0;
 }
 
 
-/* datum + sierlijnen */
+/* =====================
+   DATUM
+===================== */
 
 .date-line{
     display:flex;
@@ -222,19 +250,22 @@ body{
 
     gap:18px;
 
-    margin-top:38px;
+    margin-top:35px;
 }
 
 .date-line > span{
-    width:55px;
+    display:block;
+
+    width:48px;
 
     height:1px;
 
-    background:rgba(142,120,98,.45);
+    background:
+        rgba(142,120,98,.55);
 }
 
 .date{
-    font-size:.9rem;
+    font-size:.85rem;
 
     letter-spacing:3px;
 
@@ -251,42 +282,57 @@ body{
 ===================== */
 
 .timer-grid{
-    margin-top:45px;
+    margin-top:38px;
 
     display:flex;
 
-    gap:15px;
+    gap:12px;
 
     justify-content:center;
-
-    flex-wrap:wrap;
 }
 
 .timer-box{
-    background:white;
+    background:
+        rgba(255,252,248,.88);
 
-    min-width:100px;
+    min-width:92px;
 
-    padding:18px;
+    padding:15px 12px;
 
-    border-radius:18px;
+    border-radius:15px;
+
+    border:
+        1px solid
+        rgba(142,120,98,.10);
 
     box-shadow:
-        0 12px 24px rgba(0,0,0,.06);
+        0 10px 25px
+        rgba(79,69,59,.07);
+
+    backdrop-filter:
+        blur(3px);
 }
 
 .timer-box span{
     display:block;
 
-    font-size:2rem;
+    font-size:1.7rem;
 
-    font-weight:bold;
+    font-weight:400;
 
     color:var(--accent);
 }
 
 .timer-box small{
+    display:block;
+
+    margin-top:3px;
+
     color:#8E8376;
+
+    font-size:.68rem;
+
+    letter-spacing:.5px;
 }
 
 
@@ -301,7 +347,7 @@ body{
 
     max-width:900px;
 
-    margin:0 auto 60px auto;
+    margin:60px auto;
 
     padding:0 20px;
 }
@@ -316,7 +362,8 @@ body{
     text-align:center;
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.05);
+        0 12px 30px
+        rgba(0,0,0,.05);
 }
 
 .card h2{
@@ -350,7 +397,7 @@ body{
 
 
 /* =====================
-   MOBIEL
+   TABLET / MOBIEL
 ===================== */
 
 @media(max-width:768px){
@@ -358,60 +405,74 @@ body{
     .hero{
         min-height:100svh;
 
-        padding:45px 18px;
+        padding:20px 14px;
     }
 
-    .hero::before{
-        font-size:330px;
+    /*
+       Toog vult schermhoogte.
+       Hierdoor blijft de opening
+       zo groot mogelijk.
+    */
+
+    .arch{
+        height:100svh;
+
+        width:auto;
+
+        max-width:none;
+    }
+
+    .hero-content{
+        max-width:90%;
+
+        padding-top:3vh;
     }
 
     .kicker{
-        font-size:9px;
+        font-size:8px;
 
-        letter-spacing:4px;
+        letter-spacing:3.5px;
 
-        margin-bottom:25px;
+        margin-bottom:20px;
     }
 
     .name{
-        font-size:3.7rem;
+        font-size:3.5rem;
 
         letter-spacing:-1px;
     }
 
     .ampersand{
-        font-size:1.8rem;
+        font-size:1.6rem;
 
-        margin:7px 0;
+        margin:5px 0;
     }
 
     .date-line{
-        gap:12px;
+        gap:10px;
 
-        margin-top:30px;
+        margin-top:25px;
     }
 
     .date-line > span{
-        width:30px;
+        width:25px;
     }
 
     .date{
-        font-size:.72rem;
+        font-size:.66rem;
 
-        letter-spacing:2px;
+        letter-spacing:1.8px;
     }
 
 
-    /* COUNTDOWN MOBIEL */
+    /* countdown */
 
     .timer-grid{
-        width:100%;
+        width:78%;
 
-        gap:8px;
+        gap:6px;
 
-        flex-wrap:nowrap;
-
-        margin-top:40px;
+        margin-top:30px;
     }
 
     .timer-box{
@@ -419,24 +480,24 @@ body{
 
         flex:1;
 
-        padding:14px 5px;
+        padding:11px 4px;
 
-        border-radius:14px;
+        border-radius:12px;
     }
 
     .timer-box span{
-        font-size:1.4rem;
+        font-size:1.25rem;
     }
 
     .timer-box small{
-        font-size:.67rem;
+        font-size:.55rem;
     }
 
 
-    /* CONTENT MOBIEL */
+    /* overige content */
 
     .section{
-        margin-bottom:30px;
+        margin:35px auto;
 
         padding:0 16px;
     }
@@ -456,34 +517,41 @@ body{
 @media(max-width:380px){
 
     .name{
-        font-size:3.1rem;
+        font-size:3rem;
+    }
+
+    .kicker{
+        letter-spacing:2.8px;
     }
 
     .ampersand{
-        font-size:1.6rem;
+        font-size:1.45rem;
     }
 
     .date-line > span{
-        width:22px;
+        width:18px;
     }
 
     .date{
-        font-size:.67rem;
+        font-size:.61rem;
 
-        letter-spacing:1.5px;
+        letter-spacing:1.4px;
+    }
+
+    .timer-grid{
+        width:82%;
     }
 
     .timer-box span{
-        font-size:1.25rem;
+        font-size:1.1rem;
     }
 
     .timer-box small{
-        font-size:.6rem;
+        font-size:.5rem;
     }
 }
 
 </style>
-
 </head>
 
 
@@ -494,7 +562,10 @@ body{
      BLAADJES
 ===================== -->
 
-<div class="petals" id="petals"></div>
+<div
+    class="petals"
+    id="petals">
+</div>
 
 
 <!-- =====================
@@ -503,77 +574,111 @@ body{
 
 <section class="hero">
 
-    <div class="kicker">
-        Wij gaan trouwen
-    </div>
+
+    <!-- TRANSPARANTE TOOG -->
+
+    <img
+        src="toog.png"
+        class="arch"
+        alt=""
+        aria-hidden="true"
+    >
 
 
-    <div class="hero-names">
+    <!-- HERO INHOUD -->
 
-        <span class="name">
-            Samira
-        </span>
-
-        <span class="ampersand">
-            &amp;
-        </span>
-
-        <span class="name">
-            Youssef
-        </span>
-
-    </div>
+    <div class="hero-content">
 
 
-    <div class="date-line">
-
-        <span></span>
-
-        <div class="date">
-            10 januari 2027
+        <div class="kicker">
+            Wij gaan trouwen
         </div>
 
-        <span></span>
 
-    </div>
+        <div class="hero-names">
 
+            <span class="name">
+                Samira
+            </span>
 
-    <!-- COUNTDOWN -->
+            <span class="ampersand">
+                &amp;
+            </span>
 
-    <div class="timer-grid">
-
-        <div class="timer-box">
-
-            <span id="days">0</span>
-
-            <small>Dagen</small>
+            <span class="name">
+                Youssef
+            </span>
 
         </div>
 
 
-        <div class="timer-box">
+        <div class="date-line">
 
-            <span id="hours">0</span>
+            <span></span>
 
-            <small>Uren</small>
+            <div class="date">
+                10 januari 2027
+            </div>
 
-        </div>
-
-
-        <div class="timer-box">
-
-            <span id="minutes">0</span>
-
-            <small>Minuten</small>
+            <span></span>
 
         </div>
 
 
-        <div class="timer-box">
+        <!-- COUNTDOWN -->
 
-            <span id="seconds">0</span>
+        <div class="timer-grid">
 
-            <small>Seconden</small>
+            <div class="timer-box">
+
+                <span id="days">
+                    0
+                </span>
+
+                <small>
+                    Dagen
+                </small>
+
+            </div>
+
+
+            <div class="timer-box">
+
+                <span id="hours">
+                    0
+                </span>
+
+                <small>
+                    Uren
+                </small>
+
+            </div>
+
+
+            <div class="timer-box">
+
+                <span id="minutes">
+                    0
+                </span>
+
+                <small>
+                    Minuten
+                </small>
+
+            </div>
+
+
+            <div class="timer-box">
+
+                <span id="seconds">
+                    0
+                </span>
+
+                <small>
+                    Seconden
+                </small>
+
+            </div>
 
         </div>
 
@@ -615,13 +720,21 @@ body{
             Dagplanning
         </h2>
 
-        <p>13:00 Ontvangst</p>
+        <p>
+            13:00 Ontvangst
+        </p>
 
-        <p>14:00 Ceremonie</p>
+        <p>
+            14:00 Ceremonie
+        </p>
 
-        <p>18:00 Diner</p>
+        <p>
+            18:00 Diner
+        </p>
 
-        <p>20:00 Feest</p>
+        <p>
+            20:00 Feest
+        </p>
 
     </div>
 
@@ -707,7 +820,8 @@ for(let i = 0; i < 80; i++){
     petal.style.background =
         colors[
             Math.floor(
-                Math.random() * colors.length
+                Math.random() *
+                colors.length
             )
         ];
 
@@ -717,7 +831,9 @@ for(let i = 0; i < 80; i++){
          ${4 + Math.random() * 3}s`;
 
 
-    petalsContainer.appendChild(petal);
+    petalsContainer.appendChild(
+        petal
+    );
 
 }
 
@@ -727,7 +843,9 @@ for(let i = 0; i < 80; i++){
 ===================== */
 
 const weddingDate =
-    new Date("2027-01-10T12:00:00").getTime();
+    new Date(
+        "2027-01-10T12:00:00"
+    ).getTime();
 
 
 function updateCountdown(){
@@ -742,17 +860,21 @@ function updateCountdown(){
 
     if(diff <= 0){
 
-        document.getElementById("days").textContent =
-            "0";
+        document
+            .getElementById("days")
+            .textContent = "0";
 
-        document.getElementById("hours").textContent =
-            "0";
+        document
+            .getElementById("hours")
+            .textContent = "0";
 
-        document.getElementById("minutes").textContent =
-            "0";
+        document
+            .getElementById("minutes")
+            .textContent = "0";
 
-        document.getElementById("seconds").textContent =
-            "0";
+        document
+            .getElementById("seconds")
+            .textContent = "0";
 
         return;
 
@@ -793,20 +915,24 @@ function updateCountdown(){
         );
 
 
-    document.getElementById("days").textContent =
-        days;
+    document
+        .getElementById("days")
+        .textContent = days;
 
 
-    document.getElementById("hours").textContent =
-        hours;
+    document
+        .getElementById("hours")
+        .textContent = hours;
 
 
-    document.getElementById("minutes").textContent =
-        minutes;
+    document
+        .getElementById("minutes")
+        .textContent = minutes;
 
 
-    document.getElementById("seconds").textContent =
-        seconds;
+    document
+        .getElementById("seconds")
+        .textContent = seconds;
 
 }
 
